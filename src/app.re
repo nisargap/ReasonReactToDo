@@ -72,6 +72,28 @@ module Input = {
   };
 };
 
+module TodoItem = {
+  let component = ReasonReact.statelessComponent("TodoItem");
+  let make = (~todo: todo, ~onToggle, ~clickDelete, _children) => {
+    ...component,
+    render: _self => 
+      <div className="item" onClick=(_e => onToggle())>
+        <input
+          className="checkbox"
+          _type="checkbox"
+          checked=(Js.Boolean.to_js_boolean(todo.completed))
+        />
+        <label> (toString(todo.text)) </label>
+        <input
+          _type="button"
+          className="btn-delete"
+          value="x"
+          onClick=(_e => clickDelete())
+        />
+      </div>
+  };
+};
+
 /* We're using a reducer component */
 let component = ReasonReact.reducerComponent("App");
 
@@ -91,6 +113,22 @@ let make = _children => {
     <div className="App">
       <h3>(toString("Todo App"))</h3>
       <Input onSubmit=(reduce(todo => Add(todo))) />
+      <div className="todoList">
+      (
+        List.map(
+          todo =>
+            <TodoItem
+              key=(string_of_int(todo.id))
+              todo
+              onToggle=(reduce(() => Check(todo.id)))
+              clickDelete=(reduce(() => Delete(todo.id)))
+            />,
+          todos
+        )
+        |> Array.of_list
+        |> ReasonReact.arrayToElement
+      )
+    </div>
     </div>
   }
 }
