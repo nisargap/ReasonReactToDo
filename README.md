@@ -13,3 +13,6 @@ After having learned Redux & React/React Native and having worked in that enviro
 - [A ReasonReact Tutorial](https://jaredforsyth.com/posts/a-reason-react-tutorial/)
 
 
+## Screenshots
+
+<img src="./screenshot.png" alt="Screenshot" />
