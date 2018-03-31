@@ -15,4 +15,4 @@ After having learned Redux & React/React Native and having worked in that enviro
 
 ## Screenshots
 
-<img src="./screenshot.png" alt="Screenshot" />
+<img src="./screenshot.png" width="300" alt="Screenshot" />
