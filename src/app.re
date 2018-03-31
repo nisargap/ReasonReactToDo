@@ -87,7 +87,7 @@ module TodoItem = {
         <input
           _type="button"
           className="btn-delete"
-          value="x"
+          value="Delete"
           onClick=(_e => clickDelete())
         />
       </div>
